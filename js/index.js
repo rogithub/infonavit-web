@@ -10,8 +10,13 @@ $(async () => {
     const creditId = "1";
     const credit = await api.get(`credit/${creditId}`);
     const payments = await api.get(`payments/${creditId}`);
+    const modes = {
+        Actions: "Actions",
+        NewPayment: "NewPayment",
+    }
 
     let model = {
+        mode: ko.observable(modes.Actions),
         credit,
         payments
     };
