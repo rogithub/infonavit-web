@@ -23,7 +23,12 @@
 
             </div>
         </div>
-
+        <div class="row pt-5">
+            <div class="col">
+                <!-- ko template: { name: "pagos" } -->
+                <!-- /ko -->
+            </div>
+        </div>
     </div>
 
 
@@ -62,6 +67,50 @@
                             </td>
                             <td>
                                 <span data-bind="text: interestRatePercent"></span> %
+                            </td>
+                        </tr>
+                    </tbody>                  
+                </table>                
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="pagos">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Pagos
+                </h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Fecha
+                            </th>
+                            <th>
+                                Cantidad
+                            </th>
+                            <th>
+                                Documento
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                1/enero/2021
+                            </td>
+                            <td>
+                                $5200
+                            </td>
+                            <td>
+                                <a href="#">archivo.pdf</a>
                             </td>
                         </tr>
                     </tbody>                  
