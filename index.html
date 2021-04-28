@@ -81,11 +81,13 @@
                             <td>
                                 <span data-bind="text: creditNumber"></span>
                             </td>
-                            <td>
-                                <span data-bind="text: (new Date(startDate*1000)).toLocaleDateString('es-MX')"></span>
+                            <td>                                
+                                <!-- ko template: { name: "date", data: startDate } -->
+                                <!-- /ko -->
                             </td>
                             <td>
-                                <span data-bind="text: totalCreditAmount.toLocaleString('es-MX',{ style: 'currency', currency: 'MXN'})"></span>
+                                <!-- ko template: { name: "currency", data: totalCreditAmount } -->
+                                <!-- /ko -->                                
                             </td>
                             <td>
                                 <span data-bind="text: interestRatePercent"></span> %
@@ -123,25 +125,35 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-bind="foreach: payments">
                         <tr>
                             <td>
-                                1
+                                <span data-bind="text: id"></span>
                             </td>
                             <td>
-                                1/enero/2021
+                                <!-- ko template: { name: "date", data: paymentDate } -->
+                                <!-- /ko -->
                             </td>
                             <td>
-                                $5200
+                                <!-- ko template: { name: "currency", data: amount } -->
+                                <!-- /ko -->
                             </td>
                             <td>
                                 <a href="#">archivo.pdf</a>
                             </td>
-                        </tr>
+                        </tr>                        
                     </tbody>                  
                 </table>                
             </div>
         </div>
+    </script>
+
+    <script type="text/html" id="currency">
+        <span data-bind="text: $data.toLocaleString('es-MX',{ style: 'currency', currency: 'MXN'})"></span>
+    </script>
+
+    <script type="text/html" id="date">
+        <span data-bind="text: (new Date($data*1000)).toLocaleDateString('es-MX')"></span>
     </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
