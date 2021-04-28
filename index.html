@@ -13,7 +13,62 @@
 </head>
 
 <body>
-    <h1>Infonavit</h1>
+    <div class="container pt-4" id="main">
+        <div class="row">
+            <div class="col">
+                <!-- ko template: { name: "credit", data: credit } -->
+                <!-- /ko -->
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/html" id="credit">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" data-bind="text: creditName">
+                </h5>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                No. Credito
+                            </th>
+                            <th>
+                                Fecha Inicio
+                            </th>
+                            <th>
+                                Deuda
+                            </th>
+                            <th>
+                                Tasa
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span data-bind="text: creditNumber"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: (new Date(startDate*1000)).toLocaleDateString('es-MX')"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: totalCreditAmount"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: interestRatePercent"></span> %
+                            </td>
+                        </tr>
+                    </tbody>                  
+                </table>                
+            </div>
+        </div>
+    </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
