@@ -7,10 +7,13 @@ let api = {
 
 
 $(async () => {
-    const credit = await api.get("credit/1");
+    const creditId = "1";
+    const credit = await api.get(`credit/${creditId}`);
+    const payments = await api.get(`payments/${creditId}`);
 
     let model = {
-        credit
+        credit,
+        payments
     };
 
     ko.applyBindings(model, document.getElementById("main"));
