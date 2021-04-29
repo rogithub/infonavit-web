@@ -8,7 +8,7 @@ let api = {
         return await $.ajax({
             type: "POST",
             url: `${apiPath}${url}`,
-            data: data,
+            data: JSON.stringify(data),
             dataType: "json",
             contentType: "multipart/form-data"
           });
@@ -37,6 +37,11 @@ $(async () => {
             amount: ko.observable()
         };            
     };
+    let dateStrToSeconds = (strVal) => {
+        let date = new Date(strVal);
+        let seconds = Math.floor(date / 1000);
+        return seconds;
+    }
 
     let mapPayments = (payments) => {            
         let arr = [];
@@ -61,10 +66,14 @@ $(async () => {
         payments: ko.observableArray(),
         editingPayment: ko.observable(),        
         savePayment: async () => {
-            const self = model;
-            //ko.toJSON            
-            let data = ko.toJS(self.editingPayment());
+            const self = model;  
+            let payment = self.editingPayment();             
+            let data = ko.toJS(payment);
+            data.paymentDate = dateStrToSeconds(data.paymentDate);
             await api.post("payment", data);
+            self.payments.push(payment);
+            self.mode(modes.Actions);
+            self.editingPayment(newPayment());
         }
     };
 
