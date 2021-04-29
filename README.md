@@ -4,5 +4,5 @@ client for infonavit api
 
 # run
 ``` code bash
-$ npx serve
+$ npm run start
 ```
