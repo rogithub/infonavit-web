@@ -34,8 +34,7 @@ module.exports = {
     },
 
     externals: {
-        'ko': 'ko',
-        'signalR': 'signalR'
+        'ko': 'ko'
     }
 
 }
