@@ -99,7 +99,7 @@ var IndexModel = /** @class */ (function () {
                 amount = p.amount().toLocaleString("es-MX", { style: "currency", currency: "MXN" });
                 if (confirm("\u00BFDesea borrar pago por " + amount + " ?") === false)
                     return [2 /*return*/];
-                alert("Borrado " + p.id);
+                alert("Borrado " + p.id());
                 return [2 /*return*/];
             });
         }); };
