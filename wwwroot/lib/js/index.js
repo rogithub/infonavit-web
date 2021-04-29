@@ -92,6 +92,17 @@ var IndexModel = /** @class */ (function () {
                 }
             });
         }); };
+        this.deletePayment = function (p) { return __awaiter(_this, void 0, void 0, function () {
+            var self, amount;
+            return __generator(this, function (_a) {
+                self = this;
+                amount = p.amount().toLocaleString("es-MX", { style: "currency", currency: "MXN" });
+                if (confirm("\u00BFDesea borrar pago por " + amount + " ?") === false)
+                    return [2 /*return*/];
+                alert("Borrado " + p.id);
+                return [2 /*return*/];
+            });
+        }); };
         var self = this;
         self.$ = $;
         self.ko = ko;

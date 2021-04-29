@@ -64,4 +64,11 @@ export class IndexModel {
         self.mode(modes.Actions);
         self.newEditingModel();
     }
+
+    deletePayment = async (p: PaymentModel) => {
+        const self = this;
+        let amount = p.amount().toLocaleString("es-MX", { style: "currency", currency: "MXN" });
+        if (confirm(`¿Desea borrar pago por ${amount} ?`) === false) return;
+        alert(`Borrado ${p.id()}`);
+    }
 }
