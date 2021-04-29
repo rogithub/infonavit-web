@@ -60,9 +60,10 @@ $(async () => {
         credit,
         payments: ko.observableArray(),
         editingPayment: ko.observable(),        
-        savePayment: async (payment) => {
-            //ko.toJSON
-            let data = ko.toJS(payment);
+        savePayment: async () => {
+            const self = model;
+            //ko.toJSON            
+            let data = ko.toJS(self.editingPayment());
             await api.post("payment", data);
         }
     };
