@@ -30,7 +30,7 @@ module.exports = {
 
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'lib/js')
+        path: path.resolve(__dirname, 'wwwroot/lib/js')
     },
 
     externals: {

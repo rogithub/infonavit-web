@@ -9,7 +9,7 @@
     "scripts": {
         "serve": "npx serve",
         "build": "webpack",
-        "start": "rm ./lib/js/* && webpack && npx serve",
+        "start": "rm ./wwwroot/lib/js/* && webpack && npx serve ./wwwroot",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
