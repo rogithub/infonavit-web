@@ -1,0 +1,34 @@
+{
+    "name": "infonavit-web",
+    "version": "1.0.0",
+    "description": "client for infonavit api",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "serve": "npx serve",
+        "build": "webpack",
+        "start": "rm ./lib/js/* && webpack && npx serve",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rogithub/infonavit-web.git"
+    },
+    "author": "rockdrigo debian <correo.rodrigo@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rogithub/infonavit-web/issues"
+    },
+    "homepage": "https://github.com/rogithub/infonavit-web#readme",
+    "devDependencies": {
+        "@types/bootstrap": "^5.0.13",
+        "@types/jquery": "^3.5.5",
+        "@types/knockout": "^3.4.70",
+        "ts-loader": "^9.1.1",
+        "typescript": "^4.2.4",
+        "webpack": "^5.36.1",
+        "webpack-cli": "^4.6.0"
+    }
+}
