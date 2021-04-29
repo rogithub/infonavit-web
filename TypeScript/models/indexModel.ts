@@ -53,7 +53,7 @@ export class IndexModel {
             it.amount(p.amount);
             return it;
         });
-        self.payments(items)
+        self.payments(items);
     };
 
     savePayment = async () => {
