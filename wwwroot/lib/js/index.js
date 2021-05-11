@@ -99,8 +99,31 @@ var IndexModel = /** @class */ (function () {
                 amount = p.amount().toLocaleString("es-MX", { style: "currency", currency: "MXN" });
                 if (confirm("\u00BFDesea borrar pago por " + amount + " ?") === false)
                     return [2 /*return*/];
-                alert("Borrado " + p.id());
+                self.payments.remove(p);
                 return [2 /*return*/];
+            });
+        }); };
+        this.getFile = function (p) {
+            alert("Document " + p.documentId());
+        };
+        this.upload = function (p, el) { return __awaiter(_this, void 0, void 0, function () {
+            var self, fd, file;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        self = this;
+                        console.log("before");
+                        if (el.currentTarget.files.length <= 0)
+                            return [2 /*return*/];
+                        console.log("creting data");
+                        fd = new FormData();
+                        file = el.currentTarget.files[0];
+                        fd.append(el.currentTarget.name, file, file.name);
+                        return [4 /*yield*/, self.api.formPost("upload", fd)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
             });
         }); };
         var self = this;
@@ -388,6 +411,27 @@ var JsonReq = /** @class */ (function () {
                         return [4 /*yield*/, self.window.fetch(self.toFullUrl(url), {
                                 method: 'DELETE',
                                 mode: 'cors',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            })];
+                    case 1:
+                        response = _a.sent();
+                        return [4 /*yield*/, response.json()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        }); };
+        this.formPost = function (url, data) { return __awaiter(_this, void 0, void 0, function () {
+            var self, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        self = this;
+                        return [4 /*yield*/, self.window.fetch(self.toFullUrl(url), {
+                                method: 'POST',
+                                mode: 'cors',
+                                body: data,
                                 headers: {
                                     'Content-Type': 'application/json'
                                 }

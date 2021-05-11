@@ -6,4 +6,5 @@ export interface Api {
     put<T>(url: string, body: ObjectLiteral): Promise<T>;
     patch<T>(url: string, body: ObjectLiteral): Promise<T>;
     del<T>(url: string): Promise<T>;
+    formPost<T>(url: string, data: FormData): Promise<T>;
 }

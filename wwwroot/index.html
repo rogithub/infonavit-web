@@ -164,7 +164,8 @@
                                 <!-- /ko -->
                             </td>
                             <td>
-                                <a href="#">archivo.pdf</a>
+                                <!-- ko template: { name: "documentos" } -->
+                                <!-- /ko -->                                
                             </td>
                             <td>
                                 <button type="button" class="btn btn-outline-danger" data-bind="click: $parent.deletePayment">
@@ -180,6 +181,15 @@
                 </table>                
             </div>
         </div>
+    </script>
+
+    <script type="text/html" id="documentos">
+    <!-- ko if: documentId() === null || documentId() === undefined -->
+    <input class="form-control" type="file" name="document" data-bind="event: { change: $parent.upload.bind($parent) }">
+    <!-- /ko -->
+    <!-- ko if: documentId() !== null && documentId() !== undefined -->
+    <a href="#" data-bind="click: $parent.getFile.bind($parent)">Descargar</a>
+    <!-- /ko -->
     </script>
 
     <script type="text/html" id="currency">

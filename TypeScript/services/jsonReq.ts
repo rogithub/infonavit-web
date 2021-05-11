@@ -72,4 +72,19 @@ export class JsonReq implements Api {
 
         return await response.json();
     }
+
+    formPost = async <T>(url: string, data: FormData): Promise<T> => {
+
+        const self = this;
+        const response = await self.window.fetch(self.toFullUrl(url), {
+            method: 'POST',
+            mode: 'cors',
+            body: data,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        return await response.json();
+    }
 }

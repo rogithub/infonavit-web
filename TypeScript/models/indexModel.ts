@@ -69,6 +69,22 @@ export class IndexModel {
         const self = this;
         let amount = p.amount().toLocaleString("es-MX", { style: "currency", currency: "MXN" });
         if (confirm(`¿Desea borrar pago por ${amount} ?`) === false) return;
-        alert(`Borrado ${p.id()}`);
+        self.payments.remove(p);
+    }
+
+    getFile = (p: PaymentModel) => {
+        alert(`Document ${p.documentId()}`);
+    }
+
+    upload = async (p: PaymentModel, el: any) => {
+        const self = this;
+
+        if (el.currentTarget.files.length <= 0) return;
+
+        let fd = new FormData();
+        let file = el.currentTarget.files[0];
+        fd.append(el.currentTarget.name, file, file.name);
+
+        await self.api.formPost("upload", fd);
     }
 }
